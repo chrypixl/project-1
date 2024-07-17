@@ -26,3 +26,19 @@ const formSubmitHandler = function (event) {
 
 
 }
+const url = 'https://steam-game-search-and-details.p.rapidapi.com/game_details/search_like/game_id/?search_value=1547890%20';
+const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': 'f7d2a707f2mshd8b432ea1443c94p11780cjsnc498d4b63b8a',
+		'x-rapidapi-host': 'steam-game-search-and-details.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
