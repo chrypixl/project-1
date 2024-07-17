@@ -26,3 +26,9 @@ const formSubmitHandler = function (event) {
 
 
 }
+
+const submitButton = document.getElementById("submit-btn");
+
+submitButton.addEventListener("click", function() {
+
+});
