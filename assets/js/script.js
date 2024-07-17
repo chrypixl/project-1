@@ -1,7 +1,7 @@
-const titleInputEl = document.querySelector(#title-input);
-const genreInputEl = document.querySelector(#genre-input);
-const authorInputEl = document.querySelector(#author-input);
-const categoryInputEl = document.querySelector(#category-Input);
+const titleInputEl = document.querySelector("#title");
+const genreInputEl = document.querySelector("#genre");
+const authorInputEl = document.querySelector("#author");
+const categoryInputEl = document.querySelector("#category");
 
 
 const formSubmitHandler = function (event) {
@@ -26,3 +26,30 @@ const formSubmitHandler = function (event) {
 
 
 }
+const getBook = function (isbn) {
+    const apiUrl = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json`;
+  
+    fetch(apiUrl)
+    .then(function(response) {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error(`Error: ${response.statusText}`);
+    })
+    .then(function(data) {
+        // Check if ISBN data exists in the response
+        const bookData = data[`ISBN:${isbn}`];
+        if (bookData) {
+            console.log(bookData);
+        } else {
+            throw new Error('Book not found');
+        }
+    })
+    .catch(function(error) {
+        console.error('Error fetching book:', error);
+        alert('Unable to retrieve book details');
+    });
+
+    }
+    const isbn = '9789076174198';
+    getBook(isbn);
