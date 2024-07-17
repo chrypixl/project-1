@@ -15,20 +15,41 @@
     </header>
 
     <main>
-        <container>
+        <container class="form-container">
             <form>
                 <h2>Find Your Next Book!</h2>
-                <label for="author">Author</label><br>
-                <input type="text" id="author" name="author"><br>
-                <label for="title">Title</label><br>
-                <input type="text" id="title" name="title"><br>
-                <label for="genre">Genre</label><br>
-                <input type="text" id="genre" name="genre"><br>
-                <p>Choose Type:</p>
-                <label for="fiction">Fiction</label><br>
-                <input type="radio" id="fiction" name="fiction"><br>
-                <label for="non-fiction">Non-Fiction</label><br>
-                <input type="radio" id="non-fiction" name="non-fiction"><br>
+                
+                <div class="field">
+                    <label class="label author has-text-primary-00" for="author">Author</label>
+                    <div class="control">
+                      <input type="text" id="author" class="input in-normal has-background-primary-100 has-text-primary-00" name="author" placeholder="Enter Author name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label title has-text-primary-00" for="title">Title</label>
+                    <div class="control">
+                      <input type="text" id="title" class="input in-normal has-background-primary-100 has-text-primary-00" name="title" placeholder="Enter Title">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label genre has-text-primary-00" for="genre">Genre</label>
+                    <div class="control">
+                      <input type="text" id="genre" class="input in-normal has-background-primary-100 has-text-primary-00" name="genre" placeholder="Enter Genre">
+                    </div>
+                </div>
+
+                <div class="control"><p>Choose Type:</p>
+                    <div class="select">
+                    
+                      <select>
+                        <option>Non-Fiction</option>
+                        <option>Fiction</option>
+                      </select>
+                    </div>
+                </div>
+                
                 <input type="submit" value="Submit">
             </form>
         </container>
@@ -38,5 +59,6 @@
 
     </footer>
     
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
