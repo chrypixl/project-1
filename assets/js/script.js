@@ -26,6 +26,16 @@ const formSubmitHandler = function (event) {
 
 
 }
+
+//Naming conventions are to be changed
+const storeResponse1 = function (response){
+    //parse
+    const data = response.json();
+
+    // Store in local storage
+    localStorage.setItem('api1Response', JSON.stringify(data));
+}
+
 const getBook = function (isbn) {
     const apiUrl = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json`;
   
@@ -59,3 +69,6 @@ const submitButton = document.getElementById("submit-btn");
 submitButton.addEventListener("click", function() {
 
 });
+
+// Upon call this should change the website to the results page
+//window.location.href = "./results.html"
