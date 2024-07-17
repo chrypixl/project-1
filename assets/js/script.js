@@ -2,6 +2,8 @@ const titleInputEl = document.querySelector(#title-input);
 const genreInputEl = document.querySelector(#genre-input);
 const authorInputEl = document.querySelector(#author-input);
 const categoryInputEl = document.querySelector(#category-Input);
+const API_KEY= 'f7d2a707f2mshd8b432ea1443c94p11780cjsnc498d4b63b8a'//Key for Book Finder API
+
 
 
 const formSubmitHandler = function (event) {
@@ -23,22 +25,29 @@ const formSubmitHandler = function (event) {
             authorInputEl.value= '';
             categoryInputEl.value= '';
         }
-
-
 }
-const url = 'https://steam-game-search-and-details.p.rapidapi.com/game_details/search_like/game_id/?search_value=1547890%20';
-const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': 'f7d2a707f2mshd8b432ea1443c94p11780cjsnc498d4b63b8a',
-		'x-rapidapi-host': 'steam-game-search-and-details.p.rapidapi.com'
-	}
-};
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
+const getUserRepos = function (title, genre, author, category) {
+    const title2 = "title=" + title;
+    console.log(title2);
+
+
+
+    const apiUrl = `https://book-finder1.p.rapidapi.comapi/search?${name}/repos`;
+  
+    fetch(apiUrl)
+      .then(function (response) {
+        if (response.ok) {
+          console.log(response);
+          response.json().then(function (data) {
+            console.log(data);
+            displayRepos(data, user);
+          });
+        } else {
+          alert(`Error:${response.statusText}`);
+        }
+      })
+      .catch(function (error) {
+        alert('Unable to connect to GitHub');
+      });
+  };
