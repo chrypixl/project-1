@@ -1,7 +1,7 @@
-const titleInputEl = document.querySelector(#title-input);
-const genreInputEl = document.querySelector(#genre-input);
-const authorInputEl = document.querySelector(#author-input);
-const categoryInputEl = document.querySelector(#category-Input);
+const titleInputEl = document.querySelector("#title");
+const genreInputEl = document.querySelector("#genre");
+const authorInputEl = document.querySelector("#author");
+const categoryInputEl = document.querySelector("#category");
 
 
 const formSubmitHandler = function (event) {
@@ -28,11 +28,10 @@ const formSubmitHandler = function (event) {
 }
 
 // TO BE CHANGED UPON USE
-function storeResponse(response) {
-    // Parse JSON response
+function storeResponse(response){
+    // parse response
     const data = response.json();
 
     // Store response in local storage
-    localStorage.setItem('api1Response', JSON.stringify(data));
-        
+    localStorage.setItem('apiResponse', JSON.stringify(data));
 }
