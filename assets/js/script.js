@@ -26,3 +26,13 @@ const formSubmitHandler = function (event) {
 
 
 }
+
+// TO BE CHANGED UPON USE
+function storeResponse(response) {
+    // Parse JSON response
+    const data = response.json();
+
+    // Store response in local storage
+    localStorage.setItem('api1Response', JSON.stringify(data));
+        
+}
