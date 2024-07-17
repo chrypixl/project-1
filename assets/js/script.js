@@ -53,3 +53,9 @@ const getBook = function (isbn) {
     }
     const isbn = '9789076174198';
     getBook(isbn);
+
+const submitButton = document.getElementById("submit-btn");
+
+submitButton.addEventListener("click", function() {
+
+});
