@@ -25,29 +25,6 @@ const formSubmitHandler = function (event) {
             authorInputEl.value= '';
             categoryInputEl.value= '';
         }
+
+
 }
-
-const getUserRepos = function (title, genre, author, category) {
-    const title2 = "title=" + title;
-    console.log(title2);
-
-
-
-    const apiUrl = `https://book-finder1.p.rapidapi.comapi/search?${name}/repos`;
-  
-    fetch(apiUrl)
-      .then(function (response) {
-        if (response.ok) {
-          console.log(response);
-          response.json().then(function (data) {
-            console.log(data);
-            displayRepos(data, user);
-          });
-        } else {
-          alert(`Error:${response.statusText}`);
-        }
-      })
-      .catch(function (error) {
-        alert('Unable to connect to GitHub');
-      });
-  };
