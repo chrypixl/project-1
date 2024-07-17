@@ -22,27 +22,46 @@
                 <div class="field">
                     <label class="label author has-text-primary-00" for="author">Author</label>
                     <div class="control">
-                      <input type="text" id="author" class="input in-normal has-background-primary-100 has-text-primary-00" name="author" placeholder="Enter Author name">
+                      <input type="text" id="author-input" class="input in-normal has-background-primary-100 has-text-primary-00" name="author" placeholder="Enter Author name">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label title has-text-primary-00" for="title">Title</label>
                     <div class="control">
-                      <input type="text" id="title" class="input in-normal has-background-primary-100 has-text-primary-00" name="title" placeholder="Enter Title">
+                      <input type="text" id="title-input" class="input in-normal has-background-primary-100 has-text-primary-00" name="title" placeholder="Enter Title">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label genre has-text-primary-00" for="genre">Genre</label>
                     <div class="control">
-                      <input type="text" id="genre" class="input in-normal has-background-primary-100 has-text-primary-00" name="genre" placeholder="Enter Genre">
+                      <input type="text" id="genre-input" class="input in-normal has-background-primary-100 has-text-primary-00" name="genre" placeholder="Enter Genre">
+                    </div>
+                </div>
+                
+                <!-- ['Animals, Bugs & Pets', 'Art, Creativity & Music', 'General Literature', 'Hobbies, Sports & Outdoors', 'Science Fiction & Fantasy', 
+                 'Real Life', 'Science & Technology', 'Mystery & Suspense', 'Reference'] -->
+                <div class="control"><p>Choose Genre:</p>
+                    <div class="select">
+                      <select id="genre-input">
+                        <option>Animals</option>
+                        <option>Bugs & Pets</option>
+                        <option>Art, Creativity & Music</option>
+                        <option>General Literature</option>
+                        <option>Hobbies, Sports & Outdoors</option>
+                        <option>Science Fiction & Fantasy</option>
+                        <option>Real Life</option>
+                        <option>Science & Technology</option>
+                        <option>Mystery & Suspense</option>
+                        <option>Reference</option>
+                      </select>
                     </div>
                 </div>
 
-                <div class="control"><p>Choose Type:</p>
+                <div class="control"><p>Choose Category:</p>
                     <div class="select">
-                      <select>
+                      <select id="category-input">
                         <option>Non-Fiction</option>
                         <option>Fiction</option>
                       </select>
