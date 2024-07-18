@@ -97,9 +97,23 @@ const getBook = function (isbn) {
         console.error('Error fetching book:', error);
         alert('Unable to retrieve book details');
     });
+};
 
-    }
 
+function createBookCard(title, author, isbn, desc) { //#book is a placeholder
+    $("#book").append (`
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">${title}</h3>
+                <h3 class="card-author">${author}</h3>
+            </div>
+            <div class="card-body">
+                <h3 class="card-isbn">${isbn}</h3>
+                <p class="card-desc">${desc}</p>
+            </div>
+        </div>
+    `)
+};
 
 getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fiction");//test DELETE LATER
 
@@ -109,3 +123,8 @@ getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fictio
 //window.location.href = "./results.html"
 const isbn = '9789076174198';//test value DELETE LATER
 getBook(isbn); //test DELETE LATER
+    
+    
+    
+    
+    
