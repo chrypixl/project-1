@@ -1,0 +1,19 @@
+:root {
+    --primaryColor: rgb(63, 63, 63);
+    --secondaryColor: rgb(243, 232, 212);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background-color: var(--secondaryColor);
+}
+
+header {
+    background-color: var(--primaryColor);
+    width: 100vw;
+    height: 80px;
+}
