@@ -1,7 +1,8 @@
-const titleInputEl = document.querySelector("#title");
-const genreInputEl = document.querySelector("#genre");
-const authorInputEl = document.querySelector("#author");
-const categoryInputEl = document.querySelector("#category");
+const userInputEl= document.querySelectoror("#user-form");
+const titleInputEl = document.querySelector("#title-input");
+const genreInputEl = document.querySelector("#genre-input");
+const authorInputEl = document.querySelector("#author-input");
+const categoryInputEl = document.querySelector("#category-input");
 
 
 const formSubmitHandler = function (event) {
@@ -12,7 +13,7 @@ const formSubmitHandler = function (event) {
     const author = authorInputEl.value.trim(); 
     const category = categoryInputEl.value.trim();
 
-    getUserRepos(title,genre,author,category);
+    getUserRepos(title,category,author,genre);
     
     if(title && genre && author && category == ''){ //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
                     alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
@@ -30,15 +31,15 @@ const formSubmitHandler = function (event) {
 }
 
 
-const getUserRepos = function (title, genre, author, category) { 
+const getUserRepos = function (title, category, author, genre) { 
     const title2 = "title=" + title;
     const book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
     const author2 = "author=" + author;
-    const category2 = "category" + category;
+    const category1 = "category=" + category;
 
 
 
-    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category}&results_per_page=5&page=1`;
+    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category1}&results_per_page=5&page=1`;
     const options = {
         method: 'GET',
         headers: {
@@ -54,6 +55,7 @@ const getUserRepos = function (title, genre, author, category) {
           response.json()
           .then(function (data) {
             console.log(data);
+            localStorage.setItem('data',JSON.stringify(data)); //Store results in local storage.
 
           });
         } else {
@@ -93,7 +95,11 @@ const getBook = function (isbn) {
     }
 
 
+userFormEl.addEventListener('submit', formSubmitHandler);
+
 getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fiction");//test DELETE LATER
 
 const isbn = '9789076174198';//test value DELETE LATER
 getBook(isbn); //test DELETE LATER
+
+
