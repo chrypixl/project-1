@@ -78,7 +78,8 @@ SOFTWARE.
 
 
 ## Acknowledgments
- https://readme.so/editor
+ ReadMe Editor: https://readme.so/editor
+ Icon Source: https://www.designspiration.com/save/128121226714223/
 
 
 
