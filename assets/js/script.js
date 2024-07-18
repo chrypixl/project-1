@@ -38,15 +38,15 @@ const storeResponse1 = function (response){
     localStorage.setItem('api1Response', JSON.stringify(data));
 }
 
-const getUserRepos = function (title, genre, author, category) { 
+const getUserRepos = function (title, category, author, genre) { 
     const title2 = "title=" + title;
     const book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
     const author2 = "author=" + author;
-    const category2 = "category" + category;
+    const category1 = "category=" + category;
 
 
 
-    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category}&results_per_page=5&page=1`;
+    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category1}&results_per_page=5&page=1`;
     const options = {
         method: 'GET',
         headers: {
