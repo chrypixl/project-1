@@ -59,3 +59,19 @@ const submitButton = document.getElementById("submit-btn");
 submitButton.addEventListener("click", function() {
 
 });
+
+function createBookCard(title, author, isbn, desc) { //#book is a placeholder
+    $("#book").append (`
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">${title}</h3>
+                <h3 class="card-author">${author}</h3>
+            </div>
+            <div class="card-body">
+                <h3 class="card-isbn">${isbn}</h3>
+                <p class="card-desc">${desc}</p>
+            </div>
+        </div>
+    `)
+};
+
