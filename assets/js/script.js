@@ -18,7 +18,7 @@ const formSubmitHandler = function (event) {
     if (title && genre && author && category == '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
-
+    window.location.href = "./results.html";
 }
 
 const getUserRepos = function (title, category, author, genre) {
@@ -93,6 +93,8 @@ const getBook = function (isbn) {
 
 }
 
+
+
 function createBookCard(title, author, isbn, desc) { //#book is a placeholder
     $("#book").append (`
         <div class="card">
@@ -105,8 +107,17 @@ function createBookCard(title, author, isbn, desc) { //#book is a placeholder
                 <p class="card-desc">${desc}</p>
             </div>
         </div>
-    `)
+    `);
 };
+
+function renderBooks() {
+    const books = JSON.parse(localStorage.getItem('books')) || []; //Choose an array in local storage from which to pull items. If the array is called books, this will work.
+    const bookList = $("#book-cards");
+    bookList.empty();
+    books.forEach(book => {
+      bookList.append(createTaskCard(book));
+    });
+};    
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 
