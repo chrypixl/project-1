@@ -30,6 +30,14 @@ const formSubmitHandler = function (event) {
 
 }
 
+//Naming conventions are to be changed
+const storeResponse1 = function (response){
+    //parse
+    const data = response.json();
+
+    // Store in local storage
+    localStorage.setItem('api1Response', JSON.stringify(data));
+}
 
 const getUserRepos = function (title, category, author, genre) { 
     const title2 = "title=" + title;
@@ -99,6 +107,10 @@ userFormEl.addEventListener('submit', formSubmitHandler);
 
 getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fiction");//test DELETE LATER
 
+
+
+// Upon call this should change the website to the results page
+//window.location.href = "./results.html"
 const isbn = '9789076174198';//test value DELETE LATER
 getBook(isbn); //test DELETE LATER
 
