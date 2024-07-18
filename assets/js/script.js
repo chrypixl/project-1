@@ -22,10 +22,10 @@ const formSubmitHandler = function (event) {
 }
 
 const getUserRepos = function (title, category, author, genre) {
-    const title2 = "title=" + title;
-    const book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
-    const author2 = "author=" + author;
-    const category1 = "category=" + category;
+    let title2 = "title=" + title;
+    let book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
+    let author2 = "author=" + author;
+    let category1 = "category=" + category;
 
 
 
@@ -58,6 +58,8 @@ const getUserRepos = function (title, category, author, genre) {
         });
 
 };
+
+
 
 const getBook = function (isbn) {
     const apiUrl = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json`;
@@ -92,6 +94,11 @@ const getBook = function (isbn) {
         });
 
 }
+
+
+
+
+
 
 function createBookCard(title, author, isbn, desc) { //#book is a placeholder
     $("#book").append (`
