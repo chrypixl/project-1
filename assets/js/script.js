@@ -1,9 +1,7 @@
-const titleInputEl = document.querySelector('#title-input');
-const genreInputEl = document.querySelector('#genre-input');
-const authorInputEl = document.querySelector('#author-input');
-const categoryInputEl = document.querySelector('#category-input');
-const API_KEY= 'f7d2a707f2mshd8b432ea1443c94p11780cjsnc498d4b63b8a'//Key for Book Finder API
-
+const titleInputEl = document.querySelector("#title");
+const genreInputEl = document.querySelector("#genre");
+const authorInputEl = document.querySelector("#author");
+const categoryInputEl = document.querySelector("#category");
 
 
 const formSubmitHandler = function (event) {
@@ -34,15 +32,13 @@ const formSubmitHandler = function (event) {
 
 const getUserRepos = function (title, genre, author, category) {
     const title2 = "title=" + title;
-    const genre2 = "genre=" + genre;
-    const author2 = "author" + author;
+    const book_type = "genre=" + genre;
+    const author2 = "author=" + author;
     const category2 = "category" + category;
 
-    console.log(title2);
 
 
-
-    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&results_per_page=5&page=1`;
+    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category}&results_per_page=5&page=1`;
     const options = {
         method: 'GET',
         headers: {
@@ -50,8 +46,6 @@ const getUserRepos = function (title, genre, author, category) {
             'x-rapidapi-host': 'book-finder1.p.rapidapi.com'
         }
     };
-  
- 
 
     fetch(apiUrl, options)
       .then(function (response) {
@@ -60,7 +54,7 @@ const getUserRepos = function (title, genre, author, category) {
           response.json()
           .then(function (data) {
             console.log(data);
-            displayRepos(data, title);
+
           });
         } else {
           alert(`Error:${response.statusText}`);
@@ -72,6 +66,34 @@ const getUserRepos = function (title, genre, author, category) {
 
 };
 
-getUserRepos(`test`,`test2`,`test3`,`test4`);
+const getBook = function (isbn) {
+    const apiUrl = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json`;
+  
+    fetch(apiUrl)
+    .then(function(response) {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error(`Error: ${response.statusText}`);
+    })
+    .then(function(data) {
+        // Check if ISBN data exists in the response
+        const bookData = data[`ISBN:${isbn}`];
+        if (bookData) {
+            console.log(bookData);
+        } else {
+            throw new Error('Book not found');
+        }
+    })
+    .catch(function(error) {
+        console.error('Error fetching book:', error);
+        alert('Unable to retrieve book details');
+    });
+
+    }
 
 
+getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fiction");//test DELETE LATER
+
+const isbn = '9789076174198';//test value DELETE LATER
+getBook(isbn); //test DELETE LATER
