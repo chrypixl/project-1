@@ -86,6 +86,7 @@ const getBook = function (isbn) {
         })
         .then(function (data) {
             // Check if ISBN data exists in the response
+            localStorage.setItem('api2Response', JSON.stringify(data));
             const bookData = data[`ISBN:${isbn}`];
             if (bookData) {
                 //console.log(bookData);
