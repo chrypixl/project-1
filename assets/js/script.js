@@ -26,11 +26,28 @@ const getUserRepos = function (title, category, author, genre) {
     let book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
     let author2 = "author=" + author;
     let category1 = "category=" + category;
+    let apiUrl = `https://book-finder1.p.rapidapi.com/api/search?`
+    //`https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category1}&results_per_page=5&page=1`
 
-
-
-    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category1}&results_per_page=5&page=1`;
-    const options = {
+    if(title)
+    {
+        apiUrl = apiUrl + title2 + `&`;
+    }
+    if(author)
+    {
+        apiUrl = apiUrl + author2 + `&`;
+    }
+    if(genre)
+        {
+            apiUrl = apiUrl + book_type + `&`;
+        }
+    if(category)
+        {
+        apiUrl = apiUrl + category1 + `&`;
+        }
+        apiUrl = apiUrl + `results_per_page=5&page=1`;
+    const options =
+    {
         method: 'GET',
         headers: {
             'x-rapidapi-key': 'f7d2a707f2mshd8b432ea1443c94p11780cjsnc498d4b63b8a',
