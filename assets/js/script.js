@@ -1,7 +1,8 @@
-const titleInputEl = document.querySelector("#title");
-const genreInputEl = document.querySelector("#genre");
-const authorInputEl = document.querySelector("#author");
-const categoryInputEl = document.querySelector("#category");
+const userFormEl= document.querySelector("#user-form");
+const titleInputEl = document.querySelector("#title-input");
+const genreInputEl = document.querySelector("#genre-input");
+const authorInputEl = document.querySelector("#author-input");
+const categoryInputEl = document.querySelector("#category-input");
 
 
 const formSubmitHandler = function (event) {
@@ -18,23 +19,6 @@ const formSubmitHandler = function (event) {
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
 
-    if (title) {
-        nameInputEl.value = '';
-        genreInputEl.value = '';
-        authorInputEl.value = '';
-        categoryInputEl.value = '';
-    }
-
-
-}
-
-//Naming conventions are to be changed
-const storeResponse1 = function (response) {
-    //parse
-    const data = response.json();
-
-    // Store in local storage
-    localStorage.setItem('api1Response', JSON.stringify(data));
 }
 
 const getUserRepos = function (title, category, author, genre) {
@@ -61,6 +45,8 @@ const getUserRepos = function (title, category, author, genre) {
                 response.json()
                     .then(function (data) {
                         console.log(data);
+                            // Store in local storage
+                            localStorage.setItem('api1Response', JSON.stringify(data));
 
                     });
             } else {
@@ -122,7 +108,7 @@ function createBookCard(title, author, isbn, desc) { //#book is a placeholder
     `)
 };
 
-getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fiction");//test DELETE LATER
+userFormEl.addEventListener('submit', formSubmitHandler);
 
 
 
