@@ -1,4 +1,4 @@
-const userInputEl= document.querySelectoror("#user-form");
+const userFormEl= document.querySelector("#user-form");
 const titleInputEl = document.querySelector("#title-input");
 const genreInputEl = document.querySelector("#genre-input");
 const authorInputEl = document.querySelector("#author-input");
@@ -8,26 +8,20 @@ const categoryInputEl = document.querySelector("#category-input");
 const formSubmitHandler = function (event) {
     event.preventDefault(); // Prevents button from refreshing the page.
 
-    const title = titleInputEl.value.trim(); //trimmed to avoid spaces.
-    const genre = genreInputEl.value.trim(); // How can the user provide more than one genre? Or are we even going to allow that?
-    const author = authorInputEl.value.trim(); 
-    const category = categoryInputEl.value.trim();
+    let title = titleInputEl.value.trim(); //trimmed to avoid spaces.
+    let genre = genreInputEl.value.trim(); // How can the user provide more than one genre? Or are we even going to allow that?
+    let author = authorInputEl.value.trim(); 
+    let category = categoryInputEl.value.trim();
 
-    getUserRepos(title,category,author,genre);
     
     if(title && genre && author && category == ''){ //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
                     alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
+    else{
+        getUserRepos(title, category, author, genre);
 
-    if(title)
-        {
-            nameInputEl.value= '';
-            genreInputEl.value= '';
-            authorInputEl.value= '';
-            categoryInputEl.value= '';
-        }
-
-
+    }
+        
 }
 
 //Naming conventions are to be changed
@@ -40,10 +34,11 @@ const storeResponse1 = function (response){
 }
 
 const getUserRepos = function (title, category, author, genre) { 
-    const title2 = "title=" + title;
-    const book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
-    const author2 = "author=" + author;
-    const category1 = "category=" + category;
+    
+    let title2 = "title=" + title;
+    let book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
+    let author2 = "author=" + author;
+    let category1 = "category=" + category;
 
 
 
@@ -105,7 +100,6 @@ const getBook = function (isbn) {
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 
-getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fiction");//test DELETE LATER
 
 
 
