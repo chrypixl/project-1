@@ -30,9 +30,9 @@ const formSubmitHandler = function (event) {
 }
 
 
-const getUserRepos = function (title, genre, author, category) {
+const getUserRepos = function (title, genre, author, category) { 
     const title2 = "title=" + title;
-    const book_type = "genre=" + genre;
+    const book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
     const author2 = "author=" + author;
     const category2 = "category" + category;
 
