@@ -117,10 +117,11 @@ function getDataAPITotal(index){
    
     const userData1 = JSON.parse(localStorage.getItem('api1Response'));
     const userData2 = JSON.parse(localStorage.getItem('api2Response'));
+    const userData = 
     let title = userData1.results[index].title;
     let author = userData1.results[index].authors[0];
     let summary = userData1.results[index].summary;
-    let bookurl = userData2.preview_url;
+    let bookurl = userData2[`ISBN:${isbn}`].preview_url;
 
 
     console.log(title);
@@ -129,6 +130,7 @@ function getDataAPITotal(index){
     console.log(userData2);
     console.log(bookurl);
 
+    return title, autho
 }
 
 
