@@ -66,7 +66,7 @@ Screenshots:
 
 ## Deployment
 
-[Book Search App](index.html)
+[Book Search App](https://chrypixl.github.io/project-1/)
 >**_Note:_** Replace index with live url once deployed.
 
 The main webpage contains a simple form. Only one data field requires a value in 
