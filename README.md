@@ -26,15 +26,20 @@ I want to be able to search nonfiction books for educational materials.
 
 ## Acceptance Criteria
 
-It is done when I search for books using the 'Title' criterion and I am presented with a list of books that have the exact same title.
+It is done when I search for books using the 'Title' criterion and I am presented with a 
+list of books that have the exact same title.
 
-It is done when I search for books using the 'Genre' criterion and I am presented with a list of books that fit the selected genre.
+It is done when I search for books using the 'Genre' criterion and I am presented with a 
+list of books that fit the selected genre.
 
-It is done when I search for a book using the 'Author' criterion and I am presented a list of books written by the author.
+It is done when I search for a book using the 'Author' criterion and I am presented a list 
+of books written by the author.
 
-It is done when I search for a book by 'Category' and I am presented a list of books that fit the correct category- either Fiction or Non-fiction.
+It is done when I search for a book by 'Category' and I am presented a list of books that 
+fit the correct category- either Fiction or Non-fiction.
 
-It is done when I can select a book title from the results and I am redirected to a Open Library product page where I can see if the book is available for purchase.
+It is done when I can select a book title from the results and I am redirected to a Open 
+Library product page where I can see if the book is available for purchase.
 
 ## Roadmap
 
@@ -61,7 +66,20 @@ Screenshots:
 
 ## Deployment
 
-Add additional notes to deploy this on a live system
+[Book Search App](index.html)
+>**_Note:_** Replace index with live url once deployed.
+
+The main webpage contains a simple form. Only one data field requires a value in 
+order to submit. Type an author name or title in the appropriate field, or you 
+can choose a genre or category from the appropriate dropdown menu. Click the submit
+button. You will be redirected to the 'Results' page and a list of search results 
+will be generated. Each result contains a block of information containing a title, 
+the author's name, the genre, ISBN, and a brief description. On the right side of
+the result card you will also see a link which will take you to the book's product
+page in openlibrary.org.
+
+If you would like to submit another search, simply click the back button in the header
+to return to the form page.
 
 ## Authors
 
@@ -73,7 +91,6 @@ Khoi Mai
 ## License
 
 MIT License
-
 Copyright (c) 2024 Chris Moore
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -99,8 +116,8 @@ SOFTWARE.
  
 [ReadMe Editor] (https://readme.so/editor)
 CSS Framework: [Bulma] (https://bulma.io/)
-[Book Finder API] (https://rapidapi.com/dfskGT/api/book-finder1/playground/apiendpoint_2a269296-a7e8-42f3-a340-f1ff49d5fd74)
-[Open Library API] (https://openlibrary.org/dev/docs/api/search)
+First API: [Book Finder API] (https://rapidapi.com/dfskGT/api/book-finder1/playground/apiendpoint_2a269296-a7e8-42f3-a340-f1ff49d5fd74)
+Second API: [Open Library API] (https://openlibrary.org/dev/docs/api/search)
 [Header Icon Source] (https://www.designspiration.com/save/128121226714223/)
 
 
