@@ -60,7 +60,7 @@ const getUserRepos = function (title, category, author, genre) {
                         console.log(data);
                         // Store in local storage
                         localStorage.setItem('api1Response', JSON.stringify(data));
-                        getDataAPI1()
+                        //getDataAPI1()
                     });
             } else {
                 alert(`Error:${response.statusText}`);
@@ -109,9 +109,27 @@ const getBook = function (isbn) {
             console.error('Error fetching book:', error);
             alert('Unable to retrieve book details');
         });
-
+        getDataAPITotal(0);
 }
 
+function getDataAPITotal(index){
+   
+   
+    const userData1 = JSON.parse(localStorage.getItem('api1Response'));
+    const userData2 = JSON.parse(localStorage.getItem('api2Response'));
+    let title = userData1.results[index].title;
+    let author = userData1.results[index].authors[0];
+    let summary = userData1.results[index].summary;
+    let bookurl = userData2.preview_url;
+
+
+    console.log(title);
+    console.log(author);
+    console.log(summary);
+    console.log(userData2);
+    console.log(bookurl);
+
+}
 
 
 function createBookCard(title, author, isbn, desc) { //#book is a placeholder
