@@ -60,6 +60,7 @@ const getUserRepos = function (title, category, author, genre) {
                 console.log(response);
                 response.json()
                     .then(function (data) {
+                        
                         console.log(data);
 
                     });
