@@ -1,13 +1,26 @@
-# Book Search
+# Book Search Application
 
-One Paragraph of the project description
+For this project, a landing page containing a form was created. Any input field within 
+the form can be filled and submitted, which will use the Book Search API to find and return 
+results based on the input parameters provided by the user. The Open Library API takes 
+data from those results, then finds and returns links to product pages with matching titles 
+on the openlibrary.org website. All data provided by the APIs is kept in local storage 
+until another search is submitted. On submit, the user is navigated to a results page 
+where the application pulls selected data from local storage and generates a list card 
+for each result.
+
+Each result provides only the information expected to be most useful to the user: A book 
+image(if available), title, author name, genre, and a brief description, as well as a 
+button link redirecting the user to the relevant Open Library resource. The intended 
+use of this application is to develop a simplified search engine while calling attention
+to a valuable yet under-utilized resource for ardent readers.
 
 ## User Story
 
 As a shopper,
-I want to be able to find the right book and purchase it as a gift.
+I want to be able to find the right book and learn where to purchase it as a gift.
 As an avid reader,
-I want to be able to find books published by my favorite author.
+I want to be able to find more books published by my favorite author.
 As a student,
 I want to be able to search nonfiction books for educational materials.
 
@@ -19,9 +32,9 @@ It is done when I search for books using the 'Genre' criterion and I am presente
 
 It is done when I search for a book using the 'Author' criterion and I am presented a list of books written by the author.
 
-It is done when I search for a book by category and I am presented a list of books that fit the correct category- either Fiction or Non-fiction.
+It is done when I search for a book by 'Category' and I am presented a list of books that fit the correct category- either Fiction or Non-fiction.
 
-It is done when I can select a book title from the results and I am redirected to a Barnes and Noble store page where I can see if the book is available for purchase.
+It is done when I can select a book title from the results and I am redirected to a Open Library product page where I can see if the book is available for purchase.
 
 ## Roadmap
 
@@ -30,15 +43,20 @@ It is done when I can select a book title from the results and I am redirected t
 3. CSS -Romero
 4. Book Search API functions -Jarvis
 5. Edit ReadMe -Chris
-6. Clean up CSS -
-7. Clean up JavaScript -
-8. Clean up HTML -
+6. Open Library API functions -Khoi
+7. Clean up CSS -
+8. Clean up JavaScript -
+9. Clean up HTML -
 
 ## Screenshots
 
 Wireframes for project proposal:
 ![Wireframe for main project page](assets/images/Wireframe%20main.jpg)
 ![Wireframe for results project page](assets/images/Wireframe%20list.jpg)
+
+Screenshots:
+![]()
+![]()
 
 
 ## Deployment
@@ -78,8 +96,12 @@ SOFTWARE.
 
 
 ## Acknowledgments
- ReadMe Editor: https://readme.so/editor
- Icon Source: https://www.designspiration.com/save/128121226714223/
+ 
+[ReadMe Editor] (https://readme.so/editor)
+CSS Framework: [Bulma] (https://bulma.io/)
+[Book Finder API] (https://rapidapi.com/dfskGT/api/book-finder1/playground/apiendpoint_2a269296-a7e8-42f3-a340-f1ff49d5fd74)
+[Open Library API] (https://openlibrary.org/dev/docs/api/search)
+[Header Icon Source] (https://www.designspiration.com/save/128121226714223/)
 
 
 
