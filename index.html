@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <a href="results.html"><img src="assets/images/8a0d2f5ac6dfa17cd07aa284c85ba75c.jpg" alt="icon image" style="width:80px;height:80px;"></a>
+        <!-- <a href="results.html"><img src="assets/images/8a0d2f5ac6dfa17cd07aa284c85ba75c.jpg" alt="icon image" style="width:80px;height:80px;"></a> -->
         <h1>Book Search</h1>
     </header>
 
@@ -33,42 +33,40 @@
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label genre has-text-primary-00" for="genre">Genre</label>
-                    <div class="control">
-                      <input type="text" id="genre-input" class="input in-normal has-background-primary-100 has-text-primary-00" name="genre" placeholder="Enter Genre">
-                    </div>
-                </div>
+                
                 
                 <!-- ['Animals, Bugs & Pets', 'Art, Creativity & Music', 'General Literature', 'Hobbies, Sports & Outdoors', 'Science Fiction & Fantasy', 
                  'Real Life', 'Science & Technology', 'Mystery & Suspense', 'Reference'] -->
                 <div class="control"><p>Choose Genre:</p>
-                    <div class="select">
-                      <select id="genre-input">
-                        <option>Animals</option>
-                        <option>Bugs & Pets</option>
-                        <option>Art, Creativity & Music</option>
-                        <option>General Literature</option>
-                        <option>Hobbies, Sports & Outdoors</option>
-                        <option>Science Fiction & Fantasy</option>
-                        <option>Real Life</option>
-                        <option>Science & Technology</option>
-                        <option>Mystery & Suspense</option>
-                        <option>Reference</option>
+                    <div class="select ">
+                      <select id="genre-input" class="in-normal has-background-primary-100 has-text-primary-00">
+                        <option selected="true" value="" disabled="disabled">Choose Genre</option>
+                        <option value="Animals">Animals</option>
+                        <option value="Bugs & Pets">Bugs & Pets</option>
+                        <option value="Art, Creativity & Music">Art, Creativity & Music</option>
+                        <option value="General Literature">General Literature</option>
+                        <option value="Hobbies, Sports & Outdoors">Hobbies, Sports & Outdoors</option>
+                        <option value="Science Fiction & Fantasy">Science Fiction & Fantasy</option>
+                        <option value="Real Life">Real Life</option>
+                        <option value="Science & Technology">Science & Technology</option>
+                        <option value="Mystery & Suspense">Mystery & Suspense</option>
+                        <option value="Reference">Reference</option>
                       </select>
                     </div>
                 </div>
 
                 <div class="control"><p>Choose Category:</p>
                     <div class="select">
-                      <select id="category-input">
-                        <option>Non-Fiction</option>
-                        <option>Fiction</option>
+                      <select id="category-input" class="in-normal has-background-primary-100 has-text-primary-00">
+                        <option selected="true" value="" disabled="disabled">Choose Category</option>
+                        <option value="Nonfiction">Nonfiction</option>
+                        <option value="Fiction">Fiction</option>
                       </select>
                     </div>
                 </div>
-                
-                <input type="submit" value="Submit">
+                <div class="form-footer">
+                  <input type="submit" value="Submit" class="button is-normal">
+                </div>
             </form>
         </container>
     </main>
@@ -78,5 +76,6 @@
     </footer>
     
     <script src="./assets/js/script.js"></script>
+    <!-- <script src="./assets/js/results.js"></script> cnrl forward slash-->
 </body>
 </html>

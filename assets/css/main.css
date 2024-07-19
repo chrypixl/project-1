@@ -15,7 +15,25 @@ html{
 header {
     background-color: var(--primaryColor);
     width: 100vw;
+    height: 100px;
+
+    display: flex;
+
+}
+
+img {
+    border-radius: 50%;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 80px;
     height: 80px;
+}
+
+h1 {
+    margin:  0 auto;
+    font-size: 60px;
+    color: white;
 }
 
 form {
@@ -28,8 +46,27 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+h2{
+    text-align: center;
+    color: black;
+    font-weight: 700;
+}
+
+.control > p{
+    color: black;
 }
 
 .input {
     --bulma-input-placeholder-color: rgb(189, 187, 187);
+}
+
+.form-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }

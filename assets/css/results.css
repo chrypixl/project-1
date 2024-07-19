@@ -17,3 +17,12 @@ header {
     width: 100vw;
     height: 80px;
 }
+
+.results-container{
+    min-height: 300px;
+    height: auto;
+    width: 70vw;
+    background-color: red;
+    margin: 0 auto;
+    margin-top: 40px;
+}

@@ -1,7 +1,8 @@
-const titleInputEl = document.querySelector("#title");
-const genreInputEl = document.querySelector("#genre");
-const authorInputEl = document.querySelector("#author");
-const categoryInputEl = document.querySelector("#category");
+const userFormEl = document.querySelector("#user-form");
+const titleInputEl = document.querySelector("#title-input");
+const genreInputEl = document.querySelector("#genre-input");
+const authorInputEl = document.querySelector("#author-input");
+const categoryInputEl = document.querySelector("#category-input");
 
 
 const formSubmitHandler = function (event) {
@@ -17,36 +18,32 @@ const formSubmitHandler = function (event) {
     if (title && genre && author && category == '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
-
-    if (title) {
-        nameInputEl.value = '';
-        genreInputEl.value = '';
-        authorInputEl.value = '';
-        categoryInputEl.value = '';
-    }
-
-
-}
-
-//Naming conventions are to be changed
-const storeResponse1 = function (response) {
-    //parse
-    const data = response.json();
-
-    // Store in local storage
-    localStorage.setItem('api1Response', JSON.stringify(data));
+   //window.location.href = "./results.html";
 }
 
 const getUserRepos = function (title, category, author, genre) {
-    const title2 = "title=" + title;
-    const book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
-    const author2 = "author=" + author;
-    const category1 = "category=" + category;
+    let title2 = "title=" + title;
+    let book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
+    let author2 = "author=" + author;
+    let category1 = "category=" + category;
+    let apiUrl = `https://book-finder1.p.rapidapi.com/api/search?`
+    //`https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category1}&results_per_page=5&page=1`
 
-
-
-    const apiUrl = `https://book-finder1.p.rapidapi.com/api/search?${title2}&${author2}&${book_type}&${category1}&results_per_page=5&page=1`;
-    const options = {
+    if (title) {
+        apiUrl = apiUrl + title2 + `&`;
+    }
+    if (author) {
+        apiUrl = apiUrl + author2 + `&`;
+    }
+    if (genre) {
+        apiUrl = apiUrl + book_type + `&`;
+    }
+    if (category) {
+        apiUrl = apiUrl + category1 + `&`;
+    }
+    apiUrl = apiUrl + `results_per_page=5&page=1`;
+    const options =
+    {
         method: 'GET',
         headers: {
             'x-rapidapi-key': 'f7d2a707f2mshd8b432ea1443c94p11780cjsnc498d4b63b8a',
@@ -62,7 +59,9 @@ const getUserRepos = function (title, category, author, genre) {
                     .then(function (data) {
                         
                         console.log(data);
-
+                        // Store in local storage
+                        localStorage.setItem('api1Response', JSON.stringify(data));
+                        getDataAPI1()
                     });
             } else {
                 alert(`Error:${response.statusText}`);
@@ -73,6 +72,12 @@ const getUserRepos = function (title, category, author, genre) {
         });
 
 };
+
+function getDataAPI1(index){
+    const userData = JSON.parse(localStorage.getItem('api1Response'));
+    let title = userData.results[index].title;
+    console.log(title);
+}
 
 const getBook = function (isbn) {
     const apiUrl = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json`;
@@ -98,9 +103,9 @@ const getBook = function (isbn) {
                     console.log('No preview URL available');
                 }
             } else {
-                    throw new Error('Book not found');
-                }
-            })
+                throw new Error('Book not found');
+            }
+        })
         .catch(function (error) {
             console.error('Error fetching book:', error);
             alert('Unable to retrieve book details');
@@ -108,8 +113,10 @@ const getBook = function (isbn) {
 
 }
 
+
+
 function createBookCard(title, author, isbn, desc) { //#book is a placeholder
-    $("#book").append (`
+    $("#book").append(`
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">${title}</h3>
@@ -120,10 +127,19 @@ function createBookCard(title, author, isbn, desc) { //#book is a placeholder
                 <p class="card-desc">${desc}</p>
             </div>
         </div>
-    `)
+    `);
 };
 
-getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fiction");//test DELETE LATER
+function renderBooks() {
+    const books = JSON.parse(localStorage.getItem('books')) || []; //Choose an array in local storage from which to pull items. If the array is called books, this will work.
+    const bookList = $("#book-cards");
+    bookList.empty();
+    books.forEach(book => {
+        bookList.append(createTaskCard(book));
+    });
+};
+
+userFormEl.addEventListener('submit', formSubmitHandler);
 
 
 
@@ -131,8 +147,7 @@ getUserRepos("Harry Potter", "Science Fiction & Fantasy", "J K Rolling", "Fictio
 //window.location.href = "./results.html"
 const isbn = '9789076174198';//test value DELETE LATER
 getBook(isbn); //test DELETE LATER
-    
-    
-    
-    
-    
+
+
+
+
