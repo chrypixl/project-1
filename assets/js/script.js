@@ -14,7 +14,7 @@ const formSubmitHandler = function (event) {
     const category = categoryInputEl.value.trim();
 
     getUserRepos(title, genre, author, category);
-
+  
     if (title && genre && author && category == '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
@@ -57,10 +57,10 @@ const getUserRepos = function (title, category, author, genre) {
                 console.log(response);
                 response.json()
                     .then(function (data) {
+                        
                         console.log(data);
                         // Store in local storage
                         localStorage.setItem('api1Response', JSON.stringify(data));
-                        //getDataAPI1()
                     });
             } else {
                 alert(`Error:${response.statusText}`);
@@ -69,35 +69,41 @@ const getUserRepos = function (title, category, author, genre) {
         .catch(function (error) {
             alert('Unable to obtain results.');
         });
-
+        getBook(0);
+        getBook(1);
+        getBook(2);
+        getBook(3);
+        getBook(4);
 };
 
 function getDataAPI1(index){
     const userData = JSON.parse(localStorage.getItem('api1Response'));
     let title = userData.results[index].title;
     console.log(title);
+    return title;
 }
 
-const getBook = function (isbn) {
-    const apiUrl = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json`;
+const getBook = function (index) {
+    let title = getDataAPI1(index);
+    const apiUrl = `https://openlibrary.org/api/books?bibkeys=title:${title}&format=json`;
 
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
-                console.log(response);
                 return response.json();
+                console.log(response);
             }
             throw new Error(`Error: ${response.statusText}`);
         })
         .then(function (data) {
-            // Check if ISBN data exists in the response
-            localStorage.setItem('api2Response', JSON.stringify(data));
-            const bookData = data[`ISBN:${isbn}`];
+            // Check if title data exists in the response
+            localStorage.setItem(`api2Response${index}`, JSON.stringify(data));//Added index string concatination. Not sure if we need to store all five values.
+            const bookData = data[`title:${title}`];
             if (bookData) {
-                //console.log(bookData);
                 if (bookData.preview_url) {
                     const previewUrl = bookData.preview_url;
-                    console.log('Preview URL:', previewUrl);
+                    //console.log('Preview URL:', previewUrl);
+                    getDataAPITotal(index,previewUrl);//Gets the total Data of both APIs needed for the card results.
                 } else {
                     console.log('No preview URL available');
                 }
@@ -109,28 +115,33 @@ const getBook = function (isbn) {
             console.error('Error fetching book:', error);
             alert('Unable to retrieve book details');
         });
-        getDataAPITotal(0);
 }
 
-function getDataAPITotal(index){
+function getDataAPITotal(index,previewUrl){
    
    
     const userData1 = JSON.parse(localStorage.getItem('api1Response'));
-    const userData2 = JSON.parse(localStorage.getItem('api2Response'));
-    const userData = 
-    let title = userData1.results[index].title;
-    let author = userData1.results[index].authors[0];
-    let summary = userData1.results[index].summary;
-    let bookurl = userData2[`ISBN:${isbn}`].preview_url;
+    const userData2 = JSON.parse(localStorage.getItem(`api2Response${index}`));
+    let title1 = userData1.results[index].title;
+    let author1 = userData1.results[index].authors[0];
+    let summary1 = userData1.results[index].summary;
+    let totalResults = {
+        title: title1,
+        author: author1,
+        summary: summary1,
+        link: previewUrl,
 
+    }
 
-    console.log(title);
-    console.log(author);
-    console.log(summary);
+    console.log(`Title:`, title1);
+    console.log(`Author:`, author1);
+    console.log(`Summary:`, summary1);
     console.log(userData2);
-    console.log(bookurl);
+    console.log(previewUrl);
+    
+    localStorage.setItem(`apitotalResponse${index}`, JSON.stringify(totalResults)); //Stores results in an object file in local storage. Not sure if we need it.
+    //createBookCard(title1, author1, previewUrl, summary1);//Sends data directly to createBookCard function.
 
-    return title, autho
 }
 
 
@@ -161,11 +172,6 @@ function renderBooks() {
 userFormEl.addEventListener('submit', formSubmitHandler);
 
 
-
-// Upon call this should change the website to the results page
-//window.location.href = "./results.html"
-const isbn = '9789076174198';//test value DELETE LATER
-getBook(isbn); //test DELETE LATER
 
 
 
