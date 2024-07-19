@@ -18,10 +18,9 @@ const formSubmitHandler = function (event) {
     if (title && genre && author && category == '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
-   //window.location.href = "./results.html";
 }
 
-const getUserRepos = function (title, category, author, genre) {
+const getUserRepos = async function (title, category, author, genre) {
     let title2 = "title=" + title;
     let book_type = "book_type=" + genre; //Might want to change. Although it seems this might have been unnecessary. I generated a link with Fiction not needing a book_type= before it. DELETE BEFORE FINAL SUBMISSION!
     let author2 = "author=" + author;
@@ -69,11 +68,13 @@ const getUserRepos = function (title, category, author, genre) {
         .catch(function (error) {
             alert('Unable to obtain results.');
         });
-        getBook(0);
-        getBook(1);
-        getBook(2);
-        getBook(3);
-        getBook(4);
+    await getBook(0);
+    await getBook(1);
+    await getBook(2);
+    await getBook(3);
+    await getBook(4);
+    window.location.href = "./results.html";
+    createBookCard(0);
 };
 
 function getDataAPI1(index){
@@ -87,7 +88,7 @@ const getBook = function (index) {
     let title = getDataAPI1(index);
     const apiUrl = `https://openlibrary.org/api/books?bibkeys=title:${title}&format=json`;
 
-    fetch(apiUrl)
+    return fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
                 return response.json();
@@ -140,34 +141,8 @@ function getDataAPITotal(index,previewUrl){
     console.log(previewUrl);
     
     localStorage.setItem(`apitotalResponse${index}`, JSON.stringify(totalResults)); //Stores results in an object file in local storage. Not sure if we need it.
-    //createBookCard(title1, author1, previewUrl, summary1);//Sends data directly to createBookCard function.
 
 }
-
-
-function createBookCard(title, author, isbn, desc) { //#book is a placeholder
-    $("#book").append(`
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">${title}</h3>
-                <h3 class="card-author">${author}</h3>
-            </div>
-            <div class="card-body">
-                <h3 class="card-isbn">${isbn}</h3>
-                <p class="card-desc">${desc}</p>
-            </div>
-        </div>
-    `);
-};
-
-function renderBooks() {
-    const books = JSON.parse(localStorage.getItem('books')) || []; //Choose an array in local storage from which to pull items. If the array is called books, this will work.
-    const bookList = $("#book-cards");
-    bookList.empty();
-    books.forEach(book => {
-        bookList.append(createTaskCard(book));
-    });
-};
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 
