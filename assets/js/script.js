@@ -69,7 +69,11 @@ const getUserRepos = function (title, category, author, genre) {
         .catch(function (error) {
             alert('Unable to obtain results.');
         });
+        getBook(0);
         getBook(1);
+        getBook(2);
+        getBook(3);
+        getBook(4);
 };
 
 function getDataAPI1(index){
@@ -93,12 +97,13 @@ const getBook = function (index) {
         })
         .then(function (data) {
             // Check if title data exists in the response
-            localStorage.setItem('api2Response', JSON.stringify(data));
+            localStorage.setItem(`api2Response${index}`, JSON.stringify(data));//Added index string concatination. Not sure if we need to store all five values.
             const bookData = data[`title:${title}`];
             if (bookData) {
                 if (bookData.preview_url) {
                     const previewUrl = bookData.preview_url;
-                    console.log('Preview URL:', previewUrl);
+                    //console.log('Preview URL:', previewUrl);
+                    getDataAPITotal(index,previewUrl);//Gets the total Data of both APIs needed for the card results.
                 } else {
                     console.log('No preview URL available');
                 }
@@ -108,10 +113,36 @@ const getBook = function (index) {
         })
         .catch(function (error) {
             console.error('Error fetching book:', error);
-          
+            alert('Unable to retrieve book details');
         });
 }
 
+function getDataAPITotal(index,previewUrl){
+   
+   
+    const userData1 = JSON.parse(localStorage.getItem('api1Response'));
+    const userData2 = JSON.parse(localStorage.getItem(`api2Response${index}`));
+    let title1 = userData1.results[index].title;
+    let author1 = userData1.results[index].authors[0];
+    let summary1 = userData1.results[index].summary;
+    let totalResults = {
+        title: title1,
+        author: author1,
+        summary: summary1,
+        link: previewUrl,
+
+    }
+
+    console.log(`Title:`, title1);
+    console.log(`Author:`, author1);
+    console.log(`Summary:`, summary1);
+    console.log(userData2);
+    console.log(previewUrl);
+    
+    localStorage.setItem(`apitotalResponse${index}`, JSON.stringify(totalResults)); //Stores results in an object file in local storage. Not sure if we need it.
+    //createBookCard(title1, author1, previewUrl, summary1);//Sends data directly to createBookCard function.
+
+}
 
 
 function createBookCard(title, author, isbn, desc) { //#book is a placeholder
