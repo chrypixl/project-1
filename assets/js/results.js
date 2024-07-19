@@ -16,11 +16,15 @@ function createBookCard(index) { //#book is a placeholder
     `);
 };
 
-function renderBooks() {
+function renderResults() {
     const books = JSON.parse(localStorage.getItem('books')) || []; //Choose an array in local storage from which to pull items. If the array is called books, this will work.
     const bookList = $("#book-cards");
     bookList.empty();
     books.forEach(book => {
-        bookList.append(createTaskCard(book));
+        bookList.append(createBookCard(book));
     });
 };
+
+$(document).ready(function() {
+    renderResults();
+});
