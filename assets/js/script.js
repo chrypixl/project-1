@@ -95,7 +95,7 @@ const getBook = function (isbn) {
 
 
 
-function createBookCard(title, author, isbn, desc) { //#book is a placeholder
+function createBookCard(title, author, isbn, desc) { //#book is a placeholder. Anchor tag in the card body is placeholder for book URL which will be pulled from storage.
     $("#book").append (`
         <div class="card">
             <div class="card-header">
@@ -105,6 +105,7 @@ function createBookCard(title, author, isbn, desc) { //#book is a placeholder
             <div class="card-body">
                 <h3 class="card-isbn">${isbn}</h3>
                 <p class="card-desc">${desc}</p>
+                <a href="#">Link</a>
             </div>
         </div>
     `);
@@ -115,7 +116,7 @@ function renderBooks() {
     const bookList = $("#book-cards");
     bookList.empty();
     books.forEach(book => {
-      bookList.append(createTaskCard(book));
+      bookList.append(createBookCard(book));
     });
 };    
 
