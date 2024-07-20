@@ -1,26 +1,87 @@
 function createBookCard(book) { //Creates a card as a list item each time the function runs.
-    return `<li class="card">
-                <div class="card-header">
-                    <h3 class="card-title">${book.title}</h3>
-                    <h3 class="card-author">${book.author}</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-desc">${book.summary}</p>
-                    <a class="card-url" href="${book.link}">Available</a>
-                </div>
-            </li>`;
+   
+//    
+//     if (allPosts.length > 0) {
+
+//     for (var i = 0; i < allPosts.length; i++) {
+//         let post = allPosts[i];
+//         let newDiv = document.createElement('div');
+//         newDiv.classList.add("post-container");
+//         allPostsDiv.appendChild(newDiv);
+//         
+//                            "<p class='title'>" + post.title + "</p>" + '<hr/>' +
+//                            "<p class='textarea'>Text:" + post.content + "</p>" +
+//                            "<p class='username'>@" + post.user + "</p>";
+//     }
+
+// } else {
+
+//     allPostsDiv.innerHTML = ""; 
+// }
+// 
+        const bookList = document.getElementById("book-cards");
+
+        let card = document.createElement('div');           //<div class="card"></div>
+        card.classList.add("card");
+        bookList.appendChild(card)
+        
+        let cardHeader = document.createElement('div');
+        cardHeader.classList.add("card-header");
+        card.appendChild(newDiv2);
+
+        let cardTitle = document.createElement('h3');
+        cardTitle.classList.add("card-title");
+        cardHeader.appendChild(cardTitle);
+
+        let cardAuthor = document.createElement('h3');
+        cardAuthor.classList.add("card-author");
+        cardHeader.appendChild(cardAuthor);
+
+        let cardBody = document.createElement('div');
+        cardBody.classList.add("card-body");
+        card.appendChild(cardBody);
+
+        let cardDesc = document.createElement('p');
+        cardDesc.classList.add("card-desc");
+        cardBody.append(cardDesc);
+
+        let cardUrl = document.createElement('a');
+        cardUrl.classList.add("card-url");
+        cardUrl.setAttribute("href", book.link);
+        cardBody.append(cardUrl);
+
+        
 };
+//    card.innerHTML = 
+//             `<div class="card"> //newDiv
+//                 <div class="card-header"> //newDiv2
+//                     <h3 class="card-title">${book.title}</h3>
+//                     <h3 class="card-author">${book.author}</h3>
+//                 </div>
+//                 <div class="card-body">
+//                     <p class="card-desc">${book.summary}</p>
+//                     <a class="card-url" href="${book.link}">Available</a>
+//                 </div>
+//             </div>`;
+
 
 function renderBooks() {
     const books = JSON.parse(localStorage.getItem('apitotalResponse')) || []; //Chooses array in local storage and gets each object in the array.
-    const bookList = $("#book-cards");
-    bookList.empty();
-    books.forEach(book => { //For loop runs createBookCard for each object in the array, appends to ul with the id: book-cards.
-        bookList.append(createBookCard(book));
-    });
+    createBookCard(books[0]);
+
+    // const bookList = $("#book-cards");
+    // bookList.empty();
+    //const bookList = document.getElementById("#book-cards");
+    
+    //document.createElement("")
+
+
+    // books.forEach(book => { //For loop runs createBookCard for each object in the array, appends to container with the id: book-cards.
+    //     bookList.appendChild(createBookCard(book));
+    // });
 };
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     renderBooks();
 }); //Runs the above functions when the page loads.
 
