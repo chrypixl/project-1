@@ -27,7 +27,7 @@ function createBookCard(book) { //Creates a card as a list item each time the fu
         
         let cardHeader = document.createElement('div');
         cardHeader.classList.add("card-header");
-        card.appendChild(newDiv2);
+        card.appendChild(cardHeader);
 
         let cardTitle = document.createElement('h3');
         cardTitle.classList.add("card-title");
@@ -66,7 +66,7 @@ function createBookCard(book) { //Creates a card as a list item each time the fu
 
 
 function renderBooks() {
-    const books = JSON.parse(localStorage.getItem('apitotalResponse')) || []; //Chooses array in local storage and gets each object in the array.
+    const books = JSON.parse(localStorage.getItem('apitotalResponse0')) || []; //Chooses array in local storage and gets each object in the array.
     createBookCard(books[0]);
 
     // const bookList = $("#book-cards");
@@ -81,9 +81,24 @@ function renderBooks() {
     // });
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    renderBooks();
-}); //Runs the above functions when the page loads.
+
+
+function doSomething() {
+    console.info("DOM loaded");
+  }
+  
+  if (document.readyState === "loading") {
+    // Loading hasn't finished yet
+    document.addEventListener("DOMContentLoaded", function()
+{
+    renderBooks(); //Runs the above functions when the page loads.
+});
+  } else {
+    // `DOMContentLoaded` has already fired
+    doSomething();
+  }
+
+ 
 
 /*
     Tested the code but returned no results, was not redirected to the results page.
