@@ -74,7 +74,7 @@ const getUserRepos = async function (title, category, author, genre) {
     await getBook(3);
     await getBook(4);
     window.location.href = "./results.html";
-    createBookCard(0);
+    // createBookCard(0);  This line should no longer be necessary. The function createBookCard is on results.js
 };
 
 function getDataAPI1(index){
