@@ -8,15 +8,19 @@ function createBookCard(book) { //Creates a card as a list item each time the fu
     bookList.appendChild(card)
 
     card.innerHTML =
-        `<div class="card"> 
+        `<div class="book-card"> 
              <div class="card-header"> 
                  <h3 class="card-title">${book.title}</h3>
                 <h3 class="card-author">${book.author}</h3>
              </div>
+             <hr style="height: 1px; background-color: grey"/>
             <div class="card-body">
                 <p class="card-desc">${book.summary}</p>
-                <a class="card-url" href="${book.link}">Available</a>
+                
              </div>
+            <div class="card-footer">
+                <a class="card-url button is-white is-normal has-text-centered" href="${book.link}">Available</a>
+            </div>
          </div>`
                        
     

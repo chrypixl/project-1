@@ -10,9 +10,9 @@ header {
     min-height: 300px;
     height: auto;
     width: 70vw;
-    background-color: red;
     margin: 0 auto;
     margin-top: 40px;
+    margin-bottom: 90px;
 }
 
 h1 {
@@ -22,7 +22,7 @@ h1 {
     padding-top: 10px;
 }
 
-.is-white{
+.back{
     padding: auto;
     margin:  35px 50px 35px -50px;
 }
@@ -34,6 +34,63 @@ img {
     height: 80px;
 }
 
+.card {
+    background-color: white;
+    border-radius: 20px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 20px;
+    --bulma-card-footer-border-top: none;
+    --bulma-card-header-shadow: none;
+}
+
+.card-header {
+    height: auto;
+    flex-direction: column;
+    
+}
+
+.card-title {
+    color: black;
+    font-size: 45px;
+}
+
+.card-author{
+    color: black;
+    font-size: 25px;
+    margin-bottom: -20px;
+}
+
+.card-body{
+    height: auto;
+    padding: 0 20px;
+    
+}
+
+.card-desc {
+    color: black;
+    font-size: 18px;
+    margin: 40px 0;
+}
+
+.card-footer{
+    width: 100%;
+    height: auto;
+}
+
+.card-url {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: rgb(233, 233, 236);
+}
+
 @media (max-width: 900px) {
     header{
         height: 200px;
@@ -43,7 +100,7 @@ img {
         left: 50%; 
         margin-left: -40px;
     }
-    .is-white{
+    .back{
         position: absolute;
         right: 0px;
         top: -4px;
@@ -52,6 +109,9 @@ img {
     h1{
         padding-top: 100px;
         text-align: center;
+    }
+    .results-container {
+        width: 90vw;
     }
 }
 
