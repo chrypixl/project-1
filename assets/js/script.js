@@ -77,15 +77,17 @@ const getUserRepos = async function (title, category, author, genre) {
     // createBookCard(0);  This line should no longer be necessary. The function createBookCard is on results.js
 };
 
-function getDataAPI1(index){
+async function getDataAPI1(index){
+    await f1(index); //A timer to delay the userData long enough for the api1Response to be in local storage.
     const userData = JSON.parse(localStorage.getItem('api1Response'));
+    console.log(userData);
     let title = userData.results[index].title;
     console.log(title);
     return title;
 }
 
-const getBook = function (index) {
-    let title = getDataAPI1(index);
+const getBook = async function (index) {
+    let title = await getDataAPI1(index);
     const apiUrl = `https://openlibrary.org/api/books?bibkeys=title:${title}&format=json`;
 
     return fetch(apiUrl)
@@ -117,6 +119,19 @@ const getBook = function (index) {
             alert('Unable to retrieve book details');
         });
 }
+
+function resolveAfter2Seconds(x) { //Timer Function
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(x);
+      }, 250);
+    });
+  }
+
+async function f1(x) {
+    const y = await resolveAfter2Seconds(x);
+    console.log(y); 
+  }
 
 function getDataAPITotal(index,previewUrl){
    
