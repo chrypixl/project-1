@@ -124,7 +124,7 @@ function resolveAfter2Seconds(x) { //Timer Function
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(x);
-      }, 250);
+      }, 1000);
     });
   }
 
