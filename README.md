@@ -4,16 +4,16 @@ For this project, a landing page containing a form was created. Any input field 
 the form can be filled and submitted, which will use the Book Search API to find and return 
 results based on the input parameters provided by the user. The Open Library API takes 
 data from those results, then finds and returns links to product pages with matching titles 
-on the openlibrary.org website. All data provided by the APIs is kept in local storage 
-until another search is submitted. On submit, the user is navigated to a results page 
+on the openlibrary.org website. On submit, the user is navigated to a results page 
 where the application pulls selected data from local storage and generates a list card 
-for each result.
+for each result. All data provided by the APIs is removed from local storage once the 
+results are generated.
 
-Each result provides only the information expected to be most useful to the user: A book 
-image(if available), title, author name, genre, and a brief description, as well as a 
-button link redirecting the user to the relevant Open Library resource. The intended 
-use of this application is to develop a simplified search engine while calling attention
-to a valuable yet under-utilized resource for ardent readers.
+Each result provides only the information expected to be most useful to the user: A title, 
+author name, and a brief description, as well as a button link redirecting the user to 
+the relevant Open Library resource. The intent of this application is to develop a simplified 
+search engine while calling attention to a valuable yet under-utilized resource for 
+ardent readers.
 
 ## User Story
 
@@ -38,8 +38,8 @@ of books written by the author.
 It is done when I search for a book by 'Category' and I am presented a list of books that 
 fit the correct category- either Fiction or Non-fiction.
 
-It is done when I can select a book title from the results and I am redirected to a Open 
-Library product page where I can see if the book is available for purchase.
+It is done when I can select a title from the results and I am redirected to an Open 
+Library product page if the book is available.
 
 ## Screenshots
 
@@ -48,14 +48,13 @@ Wireframes for project proposal:
 ![Wireframe for results project page](assets/images/Wireframe%20list.jpg)
 
 Screenshots:
-![]()
-![]()
+![Main Page](assets/images/Main%20Page%20Screenshot.jpg)
+![Results Page](assets/images/Results%20Page%20Screenshot.jpg)
 
 
 ## Deployment
 
 [Book Search App](https://chrypixl.github.io/project-1/)
->**_Note:_** Replace index with live url once deployed.
 
 The main webpage contains a simple form. Only one data field requires a value in 
 order to submit. Type an author name or title in the appropriate field, or you 

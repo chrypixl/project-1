@@ -1,9 +1,9 @@
-function createBookCard(book) { //Creates a card as a list item each time the function runs.
+function createBookCard(book) {
    
 
     const bookList = document.getElementById("book-cards");
 
-    let card = document.createElement("div");           //<div class="card"></div>
+    let card = document.createElement("div");
     card.classList.add("card");
     bookList.appendChild(card)
 
@@ -19,7 +19,7 @@ function createBookCard(book) { //Creates a card as a list item each time the fu
                 
              </div>
             <div class="card-footer">
-                <a class="card-url button is-white is-normal has-text-centered" href="${book.link}">Available</a>
+                <a class="card-url button is-white is-normal has-text-centered" href="${book.link}" target="_blank" rel="noopener noreferrer">Available</a>
             </div>
          </div>`
                        
@@ -29,7 +29,7 @@ function createBookCard(book) { //Creates a card as a list item each time the fu
 
 function renderBooks() {
 
-const book1 = JSON.parse(localStorage.getItem(`apitotalResponse0`)) || []; //Chooses array in local storage and gets each object in the array.
+const book1 = JSON.parse(localStorage.getItem(`apitotalResponse0`)) || [];
 const book2 = JSON.parse(localStorage.getItem(`apitotalResponse1`)) || [];
 const book3 = JSON.parse(localStorage.getItem(`apitotalResponse2`)) || [];
 const book4 = JSON.parse(localStorage.getItem(`apitotalResponse3`)) || [];
@@ -51,12 +51,10 @@ console.info("DOM loaded");
 }
 
 if (document.readyState === "loading") {
-// Loading hasn't finished yet
 document.addEventListener("DOMContentLoaded", function()
 {
-renderBooks(); //Runs the above functions when the page loads.
+renderBooks();
 });
 } else {
-// DOMContentLoaded has already fired
 doSomething();
 }
