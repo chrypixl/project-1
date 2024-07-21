@@ -42,6 +42,8 @@ createBookCard(book3);
 createBookCard(book4);
 createBookCard(book5);
 
+localStorage.clear();
+
 };
 
 function doSomething() {
