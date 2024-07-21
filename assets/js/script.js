@@ -14,8 +14,8 @@ const formSubmitHandler = function (event) {
     const category = categoryInputEl.value.trim();
 
     getUserRepos(title, genre, author, category);
-  
-    if (title && genre && author && category == '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
+    console.log(title);
+    if (title && genre && author && category === '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
 }
@@ -66,7 +66,7 @@ const getUserRepos = async function (title, category, author, genre) {
             }
         })
         .catch(function (error) {
-            alert('Unable to obtain results.');
+            console.log('Unable to obtain results.'); //We don't need to alert the user when we can't find a book. It will be in the search results.
         });
     await getBook(0);
     await getBook(1);
@@ -116,7 +116,7 @@ const getBook = async function (index) {
         })
         .catch(function (error) {
             console.error('Error fetching book:', error);
-            alert('Unable to retrieve book details');
+            console.log('Unable to retrieve book details');
         });
 }
 
@@ -124,7 +124,7 @@ function resolveAfter2Seconds(x) { //Timer Function
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(x);
-      }, 1000);
+      }, 800);
     });
   }
 
