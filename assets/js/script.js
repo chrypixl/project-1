@@ -15,7 +15,7 @@ const formSubmitHandler = function (event) {
 
     getUserRepos(title, genre, author, category);
     console.log(title);
-    if (title && genre && author && category === '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
+    if (title== '' && genre== '' && author=='' && category == '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
 }
@@ -124,7 +124,7 @@ function resolveAfter2Seconds(x) { //Timer Function
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(x);
-      }, 800);
+      }, 1000);
     });
   }
 
