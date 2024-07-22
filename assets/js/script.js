@@ -116,7 +116,7 @@ function resolveAfter2Seconds(x) { //Timer Function
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(x);
-      }, 300);
+      }, 1000);
     });
   }
 
@@ -148,7 +148,4 @@ function getDataAPITotal(index,previewUrl){
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 
-
-
-//ToDo: edit ReadMe
 
