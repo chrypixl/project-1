@@ -13,10 +13,14 @@ const formSubmitHandler = function (event) {
     const author = authorInputEl.value.trim();
     const category = categoryInputEl.value.trim();
 
-    getUserRepos(title, genre, author, category);
-    console.log(title);
+
     if (title== '' && genre== '' && author=='' && category == '') {
         alert('Don’t be a jerk. Please provide at least one search criteria')
+        return;
+    }
+    else{
+        getUserRepos(title, genre, author, category);
+        console.log(title);
     }
     var element = document.querySelector(".sub-button");
     element.classList.replace("is-normal", "is-loading");
