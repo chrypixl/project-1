@@ -18,6 +18,8 @@ const formSubmitHandler = function (event) {
     if (title== '' && genre== '' && author=='' && category == '') { //Check if this is proper syntax. Supposed to mean if all values are empty, thus their lenghts being equal to 0.
         alert('Don’t be a jerk. Please provide at least one search criteria')//By this line, the code checks if the user as put anything for the four inputs.
     }
+    var element = document.querySelector(".sub-button");
+    element.classList.replace("is-normal", "is-loading");
 }
 
 const getUserRepos = async function (title, category, author, genre) {
