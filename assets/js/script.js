@@ -18,6 +18,8 @@ const formSubmitHandler = function (event) {
     if (title== '' && genre== '' && author=='' && category == '') {
         alert('Don’t be a jerk. Please provide at least one search criteria')
     }
+    var element = document.querySelector(".sub-button");
+    element.classList.replace("is-normal", "is-loading");
 }
 
 const getUserRepos = async function (title, category, author, genre) {
